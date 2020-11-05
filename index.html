@@ -20,20 +20,50 @@
         </div>
         <div class="links-container fade-in" id="links">
           <a href="https://parissocial.secure-decoration.com/">MERCH</a>
-          <a href="https://tomfest.co/">tomfest.co</a>
+          <a href="https://www.instagram.com/parissocial.online/">INSTAGRAM</a>
+          <a href="https://www.patreon.com/PARISSOCIAL?fan_landing=true">PATREON</a>
+          <a href="https://soundcloud.com/user-630902050/katebutch-as-parissocial-at-tomfest3">SOUNDCLOUD</a>
         </div>
       </div>
-        <div class="fullscreen-bg">
-            <div class="fullscreen-bg__video" id="player"></div>
-        </div>
+      <div class="STROBE"></div>
+      <div class="PARISCONTAINER"> <img src="shirthead10_3_crop.png" id="PARISHEAD"></div>
+
     </body>
 <style>
+.STROBE
+{
+height: 100vh;
+  position: fixed;
+  top:0;
+  left:0;
+ width: 100vw; 
+ z-index: -10;
+ opacity:0.75;
+ 
+}
+#gif
+{
+  width: 100%;
+}
+    .PARISCONTAINER {
+    text-align: center;
+    
+  }
+  #PARISHEAD {
+    max-width: 500px;
+    position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -5;
+  }
   @font-face {
   font-family: BrunoAceReg;
   src: url(BrunoAce-Regular.ttf);
 }
     body {
-    background-color: rgb(0, 0, 0);
+    background-image:url("CROWD\ GIF.gif");
+    background-position: center;
     font-family: BrunoAceReg;
     }
     h1 { color: #000; 
@@ -124,27 +154,86 @@
 }
 </style>
 <script>
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    console.log(firstScriptTag);
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '390',
-        width: '640',
-        videoId: 'eK2uglXymWU',
-        playerVars: { 'muted':1, 'autoplay': 1, 'playsinline': 1, 'loop':1, 'controls': 0 },
-        events: {
-          'onReady': onPlayerReady
-        }
-      });
+ var img = document.getElementById("PARISHEAD");
+    var maxX = screen.availWidth;
+    var minX = 0;
+     var maxY = screen.availHeight;
+    var minY = 0;
+    var countXX = 1;
+    var countYY = 1;
+    var goRightX = true;
+    var goDownY = true;
+    console.log(img.x)
+    setInterval(imgbounce,2);
+    function imgbounce () {
+            if(img.y >= (document.body.getBoundingClientRect().height)){
+                    goDownY = false;
+
+              }
+             if(img.x >= (document.body.getBoundingClientRect().width)){
+                    goRightX = false;
+            }
+            if(img.y <= minY){
+                    goDownY = true;    
+            }
+            if(img.x <= minX){
+                    goRightX = true;
+            }        
+         img.style.left = countXX*15;
+         img.style.top = countYY*15;
+        goRightX ? countXX++ : countXX--;
+        goDownY ? countYY++ : countYY--;
     }
-    function onPlayerReady(event) {
-      event.target.mute();
-      event.target.playVideo();
-    }
+
+ var bodyElement = document.getElementsByClassName("STROBE")[0];
+  
+ var requestAnimationFrame = window.requestAnimationFrame || 
+                             window.mozRequestAnimationFrame || 
+                             window.webkitRequestAnimationFrame || 
+                             window.msRequestAnimationFrame;
+  
+ var delay = 0;
+  
+ function changeColor() {
+     delay++;
+      
+     if (delay > 6) {
+         bodyElement.style.backgroundColor = getRandomColor();
+         delay = 0;
+     }
+  
+     requestAnimationFrame(changeColor);
+ }
+ changeColor();           
+  
+ function getRandomColor() {
+     // creating a random number between 0 and 255
+     var r = Math.floor(Math.random()*150);
+     var g = Math.floor(Math.random()*100);
+     var b = Math.floor(Math.random()*256);
+      
+     // going from decimal to hex
+     var hexR = r.toString(16);
+     var hexG = g.toString(16);
+     var hexB = b.toString(16);
+      
+     // making sure single character values are prepended with a "0"
+     if (hexR.length == 1) {
+         hexR = "0" + hexR;
+     }
+      
+     if (hexG.length == 1) {
+         hexG = "0" + hexG;
+     }
+  
+     if (hexB.length == 1) {
+         hexB = "0" + hexB;
+     }
+  
+     // creating the hex value by concatenatening the string values
+     var hexColor = "#" + hexR + hexG + hexB;
+     return hexColor.toUpperCase();
+ }
   var title = document.getElementById("title");
   var titleBackground = document.getElementById("title-background");
   var linkBackground = document.getElementById("link-background");
@@ -156,5 +245,6 @@ title.onclick = function(){
   linkBackground.style.opacity = 1;
   links.style.visibility = 'visible';
 }
+
 </script>
 </html>
