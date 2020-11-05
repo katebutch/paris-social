@@ -179,8 +179,8 @@ height: 100vh;
             if(img.x <= minX){
                     goRightX = true;
             }        
-         img.style.left = countXX*5;
-         img.style.top = countYY*5;
+         img.style.left = countXX*2;
+         img.style.top = countYY*2;
         goRightX ? countXX++ : countXX--;
         goDownY ? countYY++ : countYY--;
     }
@@ -197,7 +197,7 @@ height: 100vh;
  function changeColor() {
      delay++;
       
-     if (delay > 6) {
+     if (delay > 9) {
          bodyElement.style.backgroundColor = getRandomColor();
          delay = 0;
      }
