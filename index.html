@@ -19,10 +19,10 @@
           <h1>PARISSOCIAL.ONLINE</h1>
         </div>
         <div class="links-container fade-in" id="links">
-          <a href="https://parissocial.secure-decoration.com/">MERCH</a>
-          <a href="https://www.instagram.com/parissocial.online/">INSTAGRAM</a>
-          <a href="https://www.patreon.com/PARISSOCIAL?fan_landing=true">PATREON</a>
-          <a href="https://soundcloud.com/user-630902050/katebutch-as-parissocial-at-tomfest3">SOUNDCLOUD</a>
+          <a class="linktxt" href="https://parissocial.secure-decoration.com/">MERCH</a>
+          <a class="linktxt" href="https://www.instagram.com/parissocial.online/">INSTAGRAM</a>
+          <a class="linktxt" href="https://www.patreon.com/PARISSOCIAL?fan_landing=true">PATREON</a>
+          <a class="linktxt" href="https://soundcloud.com/user-630902050/katebutch-as-parissocial-at-tomfest3">SOUNDCLOUD</a>
         </div>
       </div>
       <div class="STROBE"></div>
@@ -50,7 +50,8 @@ height: 100vh;
     
   }
   #PARISHEAD {
-    max-width: 530px;
+    max-width: 730px;
+    opacity: 0.78;
     position: fixed;
       top: 50%;
       left: 50%;
@@ -68,9 +69,9 @@ height: 100vh;
     background-repeat: no-repeat;
     font-family: BrunoAceReg;
     }
-    h1 { color: #000; 
+    h1 { color: rgb(143, 143, 143); 
     transition: opacity 2s linear;
-    font-size: 1.5em;
+    font-size: 6vw;
     padding: 5px;
     }
     .content-container {
@@ -82,7 +83,7 @@ height: 100vh;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 360px;
+      width: 89vw;
       height: 5vh;
       background-color: rgb(240, 41, 197);
       filter: blur(35px)
@@ -94,9 +95,9 @@ height: 100vh;
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: rgb(240, 41, 197);
-      filter: blur(60px);
-      width: 160px;
-      height: 80px;
+      filter: blur(85px);
+      width: 40vw;
+      height: 28vw;
     }
     #links {
       position:fixed;
@@ -106,6 +107,10 @@ height: 100vh;
       opacity: 0;
       transition: opacity 1s;
       visibility:hidden;
+    }
+    .linktxt {
+      color: rgb(143, 143, 143);
+      font-size: 4.5vw;
     }
     #title {
       position: fixed;
@@ -188,6 +193,8 @@ height: 100vh;
     }
 
  var bodyElement = document.getElementsByClassName("STROBE")[0];
+ var colourArray = ["#EB0790", "#E507F5", "#9612DE", "680FFF", "1A07EB"];
+ var colourCount = 0;
   
  var requestAnimationFrame = window.requestAnimationFrame || 
                              window.mozRequestAnimationFrame || 
@@ -209,32 +216,37 @@ height: 100vh;
  changeColor();           
   
  function getRandomColor() {
+   colourCount++;
+   if((colourCount-1) > colourArray.length){
+     colourCount = 1;
+   }
+return colourArray[colourCount-1];
+
      // creating a random number between 0 and 255
-     var r = Math.floor(Math.random()*150);
-     var g = Math.floor(Math.random()*100);
-     var b = Math.floor(Math.random()*256);
+    //  var r = Math.floor(Math.random()*150);
+    //  var g = Math.floor(Math.random()*100);
+    //  var b = Math.floor(Math.random()*256);
       
-     // going from decimal to hex
-     var hexR = r.toString(16);
-     var hexG = g.toString(16);
-     var hexB = b.toString(16);
+    //  // going from decimal to hex
+    //  var hexR = r.toString(16);
+    //  var hexG = g.toString(16);
+    //  var hexB = b.toString(16);
       
-     // making sure single character values are prepended with a "0"
-     if (hexR.length == 1) {
-         hexR = "0" + hexR;
-     }
+    //  // making sure single character values are prepended with a "0"
+    //  if (hexR.length == 1) {
+    //      hexR = "0" + hexR;
+    //  }
       
-     if (hexG.length == 1) {
-         hexG = "0" + hexG;
-     }
+    //  if (hexG.length == 1) {
+    //      hexG = "0" + hexG;
+    //  }
   
-     if (hexB.length == 1) {
-         hexB = "0" + hexB;
-     }
-  
-     // creating the hex value by concatenatening the string values
-     var hexColor = "#" + hexR + hexG + hexB;
-     return hexColor.toUpperCase();
+    //  if (hexB.length == 1) {
+    //      hexB = "0" + hexB;
+    //  }
+    //  // creating the hex value by concatenatening the string values
+    //  var hexColor = "#" + hexR + hexG + hexB;
+    //  return hexColor.toUpperCase();
  }
   var title = document.getElementById("title");
   var titleBackground = document.getElementById("title-background");
