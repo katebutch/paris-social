@@ -68,8 +68,15 @@ height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     font-family: BrunoAceReg;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
     }
     h1 { color: rgb(143, 143, 143); 
+     color: rgb(211, 168, 119);
     transition: opacity 2s linear;
     font-size: 6vw;
     padding: 5px;
@@ -83,9 +90,10 @@ height: 100vh;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 89vw;
-      height: 5vh;
-      background-color: rgb(240, 41, 197);
+      width: 87vw;
+      height: 5.7vh;
+      /* background-color: rgb(240, 41, 197); */
+      background-color: #111111;
       filter: blur(35px)
     }
     .link-background {
@@ -94,10 +102,12 @@ height: 100vh;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: rgb(240, 41, 197);
-      filter: blur(85px);
-      width: 40vw;
-      height: 28vw;
+      /* background-color: rgb(240, 41, 197); */
+      /* background-color: #181818; */
+      /* filter: blur(135px); */
+      /* width: 40vw; */
+      /* height: 28vw; */
+      /* opacity: 0.5; */
     }
     #links {
       position:fixed;
@@ -109,8 +119,22 @@ height: 100vh;
       visibility:hidden;
     }
     .linktxt {
-      color: rgb(143, 143, 143);
+      color: rgb(161, 161, 161);
+      color: rgb(211, 168, 119);
       font-size: 4.5vw;
+    }
+    @media (max-width: 900px) {
+      .linktxt {
+        font-size:6vw;
+      }
+      h1 {
+        font-size: 6.7vw;
+      }
+      .link-background {
+        filter:blur(45px);
+        height: 50vw;
+        width: 50vw;
+      }  
     }
     #title {
       position: fixed;
@@ -193,7 +217,8 @@ height: 100vh;
     }
 
  var bodyElement = document.getElementsByClassName("STROBE")[0];
- var colourArray = ["#EB0790", "#E507F5", "#9612DE", "680FFF", "1A07EB"];
+//var colourArray = ["#EB0790", "#E507F5", "#9612DE", "680FFF", "1A07EB"];
+ var colourArray = ['#FFF', '#000']
  var colourCount = 0;
   
  var requestAnimationFrame = window.requestAnimationFrame || 
@@ -206,7 +231,7 @@ height: 100vh;
  function changeColor() {
      delay++;
       
-     if (delay > 9) {
+     if (delay > 14) {
          bodyElement.style.backgroundColor = getRandomColor();
          delay = 0;
      }
