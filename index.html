@@ -164,7 +164,7 @@ height: 100vh;
     var goRightX = true;
     var goDownY = true;
     console.log(img.x)
-    setInterval(imgbounce,2);
+    setInterval(imgbounce,5);
     function imgbounce () {
             if(img.y >= (document.body.getBoundingClientRect().height)){
                     goDownY = false;
@@ -179,8 +179,8 @@ height: 100vh;
             if(img.x <= minX){
                     goRightX = true;
             }        
-         img.style.left = countXX*2;
-         img.style.top = countYY*2;
+         img.style.left = countXX;
+         img.style.top = countYY;
         goRightX ? countXX++ : countXX--;
         goDownY ? countYY++ : countYY--;
     }
